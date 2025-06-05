@@ -1,4 +1,4 @@
 jenkins:
-  url: http://15.164.104.2:8080
-  username: admin
-  token: 11312a53e6124302da7fd016b159c35d27
+  url: ${JENKINS_URL}
+  username: ${USERNAME}
+  token: ${JENKINS_TOKEN}

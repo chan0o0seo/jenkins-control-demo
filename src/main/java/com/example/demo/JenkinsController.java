@@ -26,9 +26,9 @@ public class JenkinsController {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    @PostMapping("/create-job")
-    public ResponseEntity<String> createJenkinsJob() throws IOException {
-        String jenkinsUrl = url + "/createItem?name=my-new-pipeline";
+    @PostMapping("/create-/{jobName}")
+    public ResponseEntity<String> createJenkinsJob(@PathVariable String jobName) throws IOException {
+        String jenkinsUrl = url + "/createItem?name="+jobName;
         String username = jenkinsUsername;
         String apiToken = jenkinsToken;
 
@@ -54,9 +54,7 @@ public class JenkinsController {
     }
 
     @PostMapping("/update-job/{jobName}")
-    public ResponseEntity<String> updateJenkinsJob(
-            @PathVariable String jobName
-    ) throws IOException {
+    public ResponseEntity<String> updateJenkinsJob(@PathVariable String jobName) throws IOException {
         String jenkinsUrl = url + "/job/" + jobName + "/config.xml";
 
         String auth = jenkinsUsername + ":" + jenkinsToken;
