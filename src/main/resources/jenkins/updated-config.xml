@@ -1,0 +1,33 @@
+<flow-definition plugin="workflow-job">
+    <description>HTTP test pipeline</description>
+    <keepDependencies>false</keepDependencies>
+    <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps">
+        <script>
+            <![CDATA[
+        pipeline {
+          agent any
+          stages {
+            stage('Build2') {
+              steps {
+                echo 'Building...'
+              }
+            }
+            stage('Test2') {
+              steps {
+                echo 'Testing...'
+              }
+            }
+            stage('Deploy2') {
+              steps {
+                echo 'Deploying...'
+              }
+            }
+          }
+        }
+      ]]>
+        </script>
+        <sandbox>true</sandbox>
+    </definition>
+    <triggers/>
+    <disabled>false</disabled>
+</flow-definition>
