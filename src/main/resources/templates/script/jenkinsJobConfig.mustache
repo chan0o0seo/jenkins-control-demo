@@ -1,0 +1,28 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job">
+    <actions/>
+    <description>{{description}}</description>
+    <keepDependencies>false</keepDependencies>
+    <properties>
+        {{#url}}
+        <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.19.2">
+            <projectUrl>{{url}}</projectUrl>
+            <displayName></displayName>
+        </com.coravy.hudson.plugins.github.GithubProjectProperty>
+        {{/url}}
+    </properties>
+    <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps">
+        <script><![CDATA[
+            {{{script}}}
+        ]]></script>
+        <sandbox>true</sandbox>
+    </definition>
+    <triggers>
+        {{#githubtrigger}}
+                <com.cloudbees.jenkins.GitHubPushTrigger>
+                    <spec></spec>
+                </com.cloudbees.jenkins.GitHubPushTrigger>
+        {{/githubtrigger}}
+    </triggers>
+    <disabled>false</disabled>
+</flow-definition>

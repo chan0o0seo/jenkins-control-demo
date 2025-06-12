@@ -1,4 +1,4 @@
 jenkins:
   url: ${JENKINS_URL}
-  username: ${USERNAME}
+  username: ${USER_NAME}
   token: ${JENKINS_TOKEN}
